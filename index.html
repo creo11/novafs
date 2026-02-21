@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Facility Solutions</title>
+    <link rel="stylesheet" href="/css/nova.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="main-content">
+	<nav id="mainNav" class="flex-col align-center jusitify-center default-padding">
+		<div class="center-content">
+			<img class="nova-logo" src="/img/home/nova-nav.svg" />
+			<input type="checkbox" id="menu-toggle">
+			<label for="menu-toggle" class="hamburger">&#9776;</label>
+			<ul class="nav-links">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li id="navServices"><a href="#">Services</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</div>
+	</nav>
+	<section id="hero">
+		<div class="center-content">
+			<div class="certifications">
+				<img src="/img/home/certifications/ahca-premier-provider-award-2023.png">
+				<img src="/img/home/certifications/ahca-covid.png">
+				<img src="/img/home/certifications/ahca-phc.png">
+				<img src="/img/home/certifications/ahca-registered-partner.png">
+			</div>
+		</div>
+	</section>
+	<section id="services">
+		<div class="center-content">
+			<div class="page-section-info">
+				<h1 class="section-title">Services</h1>
+				<h2>Maintain a Flawless First Impression</h2>
+			</div>
+			<div id="servicesContainer"></div>
+		</div>
+	</section>
+</div>
+<template id="serviceItem.tpl.html">
+	<div class="service-item">
+		<div class="service-item-img"
+		     style="background-image: url('${img}')">
+		</div>
+		<div class="service-details">
+			<h3 class="service-title">${title}</h3>
+			<div class="service-info">${info}</div>
+			<button class="service-link">Learn More</button>
+		</div>
+	</div>
+</template>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="/js/nova-dist.js"></script>
+</body>
+</html>

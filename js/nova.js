@@ -1,0 +1,117 @@
+window.addEventListener('scroll', function () {
+	const header = document.querySelector('nav'); 
+    
+    if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+}, {passive: true});
+
+tippy('#navServices', {
+	content: 'My tooltip!',
+	trigger: 'click'
+});
+
+function getValue(obj, path) {
+  return path.split('.').reduce((acc, key) => {
+    return acc?.[key];
+  }, obj);
+}
+
+function templateRepeat({ data, templateId, targetId }) {
+  const template = document.getElementById(templateId).innerHTML;
+  const target = document.getElementById(targetId);
+
+  target.innerHTML = data.map((item, index) => {
+    return template.replace(/\${(.*?)}/g, (_, expression) => {
+      const key = expression.trim();
+
+      if (key === '$index') return index;
+
+      const value = getValue(item, key);
+      return value ?? '';
+    });
+  }).join('');
+}
+
+const services = [
+	{
+		title: 'Janitorial Services',
+		info: 'Maintain a pristine environment with our comprehensive daily or weekly cleaning. From dusting and vacuuming to restroom sanitation, we handle the essentials so you can focus on your business.',
+		link: '/services/jantorial',
+		img: '/img/services/janitorial.jpeg'
+	},
+	{
+		title: 'Carpet & Area Rug Cleaning',
+		info: 'Revitalize your space with professional deep-cleaning that removes allergens, tough stains, and odors. Our specialized equipment extends the life of your flooring while keeping it looking brand new.',
+		link: '/services/carpet-cleaning',
+		img: '/img/services/carpetCleaning.jpeg'
+	},
+	{
+		title: 'Garage Cleaning & Pressure Washing',
+		info: 'Blast away layers of oil, dirt, and grime from your parking structures and walkways. Our high-powered pressure washing improves safety and instantly boosts your property’s curb appeal.',
+		link: '/services/pressure-washing',
+		img: '/img/services/pressureWashing.jpeg'
+	},
+	{
+		title: 'Garbage Hauling & Paint/Lightbulb Removal',
+		info: 'Let us handle the heavy lifting and tricky disposal. We provide efficient waste removal and ensure specialized items like paint and bulbs are handled with care and environmental responsibility.',
+		link: '/services/garbage-removal',
+		img: '/img/services/garbageRemoval.jpeg'
+	},
+	{
+		title: 'Graffiti Abatement',
+		info: 'Protect your property’s image with our rapid graffiti removal services. We use specialized techniques to erase unwanted markings quickly without damaging the underlying surfaces.',
+		link: '/services/graffiti-abatement',
+		img: '/img/services/graffitiRemoval.jpeg'
+	},
+	{
+		title: 'Unit Turn Over Services',
+		info: 'Perfect for property managers, we provide deep-cleaning and detail work to get vacant units "move-in ready" fast. We ensure every corner sparkles for your next tenant.',
+		link: '/services/unit-turnover',
+		img: '/img/services/unitTurnover.jpeg'
+	},
+	{
+		title: 'Window Cleaning',
+		info: 'See the world more clearly with streak-free interior and exterior window washing. We clean frames, sills, and glass to let the natural light shine through beautifully.',
+		link: '/services/window-cleaning',
+		img: '/img/services/windowCleaning.jpeg'
+	},
+	{
+		title: 'Day Porters',
+		info: 'Our on-site day porters provide a consistent presence to manage spills, restock supplies, and keep common areas immaculate throughout your busiest business hours.',
+		link: '/services/day-porters',
+		img: '/img/services/dayPorter.jpeg'
+	}
+];
+
+templateRepeat({
+  data: services,
+  templateId: "serviceItem.tpl.html",
+  targetId: "servicesContainer"
+});
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const observerOptions = {
+        root: null,
+        threshold: 0.5,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    const serviceItems = document.querySelectorAll('.service-item');
+    serviceItems.forEach(item => {
+        observer.observe(item);
+    });
+});
