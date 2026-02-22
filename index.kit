@@ -1,34 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Facility Solutions</title>
-    <link rel="stylesheet" href="/css/nova.css">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-</head>
+<!-- @import "_head.kit"-->
 <script>
 	let copyrightYear = new Date().getFullYear();
 </script>
 <body>
 <div class="main-content">
-<nav id="mainNav" class="flex-col align-center jusitify-center">
-    <div class="center-content">
-        <img class="nova-logo" src="/img/home/nova-nav.svg" />
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="hamburger">&#9776;</label>
-        <ul class="nav-links">
-            <li><a href="/">Home
-            </a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/services">Services</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </div>
-</nav>
+	<!-- @import "_nav.kit" -->
 	<section id="hero" class="home">
 		<div class="center-content">
 			<div class="certifications">
@@ -49,11 +27,7 @@
 		</div>
 	</section>
 </div>
-<footer>
-    <div class="center-content">
-        <span>&copy; <span id="copyrightYear"></span> Nova Facility Solutions</span>
-    </div>
-</footer>
+<!-- @import "_footer.kit" -->
 <template id="serviceItem.tpl.html">
 	<div class="service-item">
 		<div class="service-item-img"

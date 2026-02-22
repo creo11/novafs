@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Facility Solutions</title>
+    <link rel="stylesheet" href="/css/nova.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="main-content">
+<nav id="mainNav" class="flex-col align-center jusitify-center">
+    <div class="center-content">
+        <img class="nova-logo" src="/img/home/nova-nav.svg" />
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">&#9776;</label>
+        <ul class="nav-links">
+            <li><a href="/">Home
+            </a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+	<section id="hero" class="services">
+		<div class="center-content">
+			<div class="page-title">
+				<h1>Services</h1>
+			</div>
+		</div>
+	</section>
+	<section id="servicesPage">
+		<div class="center-content margin-50">
+			<div class="split-content-container collapse-container">
+				<div class="split-content-item">
+					<h1>Complete Facility Cleaning & Maintenance Solutions</h1>
+					<p>At Nova Facility Solutions, we provide comprehensive cleaning and facility maintenance services designed to keep your property safe, professional, and well-maintained year-round.</p>
+					<p>Our team is licensed, insured, background-checked, and committed to delivering reliable service with clear communication and flexible scheduling. Whether you need ongoing maintenance or one-time specialty services, we tailor our solutions to fit your property's specific needs.</p>
+				</div>
+				<div class="split-content-item">
+					<h2>We proudly serve:</h2>
+					<div class="split-content-container">
+						<div class="split-content-item">
+							<ul class="nova-list">
+								<li>Homeowners Associations (HOAs)</li>
+								<li>Commercial & Office Buildings</li>
+								<li>Schools & Educational Facilities</li>
+							</ul>
+						</div>
+						<div class="split-content-item">
+							<ul class="nova-list">
+								<li>Healthcare & Medical Offices</li>
+								<li>Government & Municipal Properties</li>
+								<li>Multi-Family & Residential Communities</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="services">
+		<div class="center-content">
+			<div id="servicesContainer"></div>
+		</div>
+	</section>
+	<section>
+		<div class="center-content margin-50">
+			<div class="split-content-container collapse-container">
+				<div class="split-content-item">
+					<h1>Why Choose Nova Facility Solutions?</h1>
+					<h2>We don't just clean — we protect your investment.</h2>
+					<div class="split-content-container">
+						<div class="split-content-item">
+							<ul class="nova-list">
+								<li>Licensed & Insured</li>
+								<li>Background-Checked Team</li>
+								<li>Eco-Friendly Cleaning Options</li>
+								<li>Flexible Scheduling (Nights & Weekends Available)</li>
+							</ul>
+						</div>
+						<div class="split-content-item">
+							<ul class="nova-list">
+								<li>Custom Maintenance Plans</li>
+								<li>Responsive Communication</li>
+								<li>Transparent Pricing</li>
+								<li>Satisfaction Guaranteed</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="split-content-item">
+					<h1>Ready To Get Started?</h1>
+					<p>Whether you need routine janitorial service or specialty cleaning, Nova Facility Solutions is ready to create a customized plan for your property.</p>
+					<p>Request a Quote Today or Contact Our Team To Discuss Your Needs</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+<footer>
+    <div class="center-content">
+        <span>&copy; <span id="copyrightYear"></span> Nova Facility Solutions</span>
+    </div>
+</footer>
+<template id="serviceItem.tpl.html">
+	<div class="service-item">
+		<div class="service-item-img"
+		     style="background-image: url('${img}')">
+		</div>
+		<div class="service-details">
+			<h3 class="service-title">${title}</h3>
+			<div class="service-info">${info}</div>
+			<button class="service-link">Learn More</button>
+		</div>
+	</div>
+</template>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="/js/nova-dist.js"></script>
+<script src="/js/services-dist.js"></script>
+</body>
+</html>

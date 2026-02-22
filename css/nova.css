@@ -2,6 +2,7 @@ body {
   margin: 0;
   font-family: "Lato", sans-serif;
   font-size: 14px;
+  color: #333;
 }
 * {
   -webkit-box-sizing: border-box;
@@ -59,8 +60,12 @@ body {
   margin: auto;
   padding: 0 25px;
 }
+.center-content.margin-50 {
+  margin: 50px auto;
+}
 .nova-logo {
   height: 75px;
+  margin: 10px 0;
 }
 @container nova-container (max-width: 650px) {
   #hero {
@@ -89,13 +94,48 @@ button {
   position: fixed;
   width: 100%;
   z-index: 1;
-  -webkit-transition: background-color ease 0.5s;
-  transition: background-color ease 0.5s;
+  -webkit-transition: all ease 0.5s;
+  transition: all ease 0.5s;
 }
 #mainNav.scrolled {
   background-color: #39aa9b;
+  -webkit-box-shadow: 0 0 15px #000000cc;
+          box-shadow: 0 0 15px #000000cc;
 }
 #mainNav .center-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+#mainNav .nav-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#mainNav .nav-links li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  cursor: pointer;
+}
+#mainNav .nav-links li:hover {
+  background-color: #00000022;
+}
+#mainNav .nav-links li a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -106,23 +146,9 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-#mainNav .nav-links {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  list-style: none;
-}
-#mainNav .nav-links li a {
   color: white;
   text-decoration: none;
   padding: 0 15px;
-}
-#mainNav .nav-links li a:hover {
-  text-decoration: underline;
 }
 #mainNav #menu-toggle,
 #mainNav .hamburger {
@@ -167,29 +193,38 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-image: url('/img/home/sf-skyline-nova.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
-  height: 700px;
   background-position: center;
 }
-#hero .center-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+#hero.home {
+  height: 700px;
+  background-image: url('/img/home/sf-skyline-nova.jpg');
+}
+#hero.home .center-content {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+}
+#hero.services {
+  height: 500px;
+  background-image: url('/img/services/servicesHero.jpeg');
+}
+#hero .center-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
   padding: 25px;
+  overflow: hidden;
 }
 #hero .center-content .certifications {
   display: -webkit-box;
@@ -206,6 +241,25 @@ button {
 }
 #hero .center-content .certifications img {
   max-height: 80px;
+}
+#hero .center-content .page-title {
+  margin-bottom: -40px;
+  color: #fff;
+  text-shadow: 0 0 20px #00000055;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+#hero .center-content .page-title h1 {
+  font-size: 70px;
+  text-transform: uppercase;
+  margin: 0;
 }
 #services {
   background-color: #f5f5f5;
@@ -357,4 +411,56 @@ button {
     width: 100%;
     min-height: 300px;
   }
+}
+.split-content-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  gap: 40px;
+}
+.split-content-container .split-content-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(50% - 20px);
+          flex: 0 0 calc(50% - 20px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+@media (max-width: 1000px) {
+  .split-content-container.collapse-container > .split-content-item {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+  }
+}
+.nova-list {
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  gap: 12px;
+}
+.nova-list li {
+  font-size: 16px;
+  color: #666;
+  list-style: none;
+  padding: 0 0 0 35px;
+  margin: 0;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGRhdGEtbmFtZT0iTGF5ZXIgMSIgdmlld0JveD0iMCAwIDEwMy4yOCAxMDMuMjgiPjxwYXRoIGQ9Ik02MC44MyA0Mi40NSA1MS42NCAwbC05LjE5IDQyLjQ1TDAgNTEuNjRsNDIuNDUgOS4xOSA5LjE5IDQyLjQ1IDkuMTktNDIuNDUgNDIuNDUtOS4xOXoiIGRhdGEtY29sb3I9IjMiIHN0eWxlPSJmaWxsOiNmYmFhMWIiLz48L3N2Zz4=");
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 24px;
 }

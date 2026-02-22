@@ -1,7 +1,11 @@
+@grey-text: #666;
+@primary-text: #333;
+
 body {
 	margin: 0;
 	font-family: "Lato", sans-serif;
 	font-size: 14px;
+	color: @primary-text;
 }
 * {
 	box-sizing: border-box;
@@ -36,9 +40,13 @@ body {
 	width: 100%;
 	margin: auto;
 	padding: 0 25px;
+	&.margin-50 {
+		margin: 50px auto;
+	}
 }
 .nova-logo {
 	height: 75px;
+	margin: 10px 0;
 }
 @container nova-container (max-width: 650px) {
 	#hero {
@@ -69,14 +77,14 @@ button {
 	position: fixed;
 	width: 100%;
 	z-index: 1;
-	transition: background-color ease .5s;
+	transition: all ease .5s;
 	&.scrolled {
 		background-color: #39aa9b;
+		box-shadow: 0 0 15px #000000cc;
 	}
 	.center-content {
 		display: flex;
 		flex-flow: row;
-		align-items: center;
 		justify-content: space-between;
 	}
 
@@ -84,18 +92,24 @@ button {
   .nav-links {
     display: flex;
     list-style: none;
-
+	margin: 0;
+	padding: 0;
     li {
-      a {
-        color: @text-color;
-        text-decoration: none;
-        padding: 0 15px;
-        
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
+		display: flex;
+		flex-flow: row;
+		cursor: pointer;
+		&:hover {
+			background-color: #00000022;
+		}
+		a {
+			display: flex;
+			flex-flow: row;
+			align-items: center;	
+			color: @text-color;
+			text-decoration: none;
+			padding: 0 15px;
+		}
+	}
   }
 
   // Hide the checkbox and hamburger by default (Desktop)
@@ -136,18 +150,27 @@ button {
 	display: flex;
 	flex-flow: column;
 	align-items: center;
-	background-image: url('/img/home/sf-skyline-nova.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	flex: 1 1 auto;
-	height: 700px;
 	background-position: center;
+	&.home {
+		height: 700px;
+		background-image: url('/img/home/sf-skyline-nova.jpg');
+		.center-content {
+			align-items: flex-end;
+			justify-content: flex-end;
+		}
+	}
+	&.services {
+		height: 500px;
+		background-image: url('/img/services/servicesHero.jpeg');
+	}
 	.center-content {
 		display: flex;
-		align-items: flex-end;
-		justify-content: flex-end;
 		flex: 1 1 auto;
 		padding: 25px;
+		overflow: hidden;
 		.certifications {
 		    display: flex;
 		    flex-flow: row;
@@ -156,6 +179,19 @@ button {
 		    img {
 		    	max-height: 80px;
 		    }
+		}
+		.page-title {
+			margin-bottom: -40px;
+			color: #fff;
+			text-shadow: 0 0 20px #00000055;
+			display: flex;
+			flex-flow: column;
+			align-self: flex-end;
+			h1 {
+				font-size: 70px;
+				text-transform: uppercase;
+				margin: 0;
+			}
 		}
 	}
 }
@@ -236,7 +272,7 @@ button {
 	        		margin: 0;
 	        	}
 	        	.service-info {
-	        		color: #666;
+	        		color: @grey-text;
 	        	}
 	        	@media(max-width: 650px) {
 	        		width: 100%;
@@ -257,4 +293,39 @@ button {
 	        }
 	    }
 	}
+}
+.split-content-container {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 40px;
+    .split-content-item {
+        flex: 0 0 calc(50% - 20px);
+        display: flex;
+        flex-flow: column;
+    }
+	&.collapse-container {
+		@media(max-width: 1000px) {
+			>.split-content-item {
+				flex: 0 0 100%;
+			}
+		}
+	}
+}
+.nova-list {
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-flow: column;
+	gap: 12px;
+    li {
+		font-size: 16px;
+		color: @grey-text;
+        list-style: none;
+		padding: 0 0 0 35px;
+		margin: 0;
+		background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGRhdGEtbmFtZT0iTGF5ZXIgMSIgdmlld0JveD0iMCAwIDEwMy4yOCAxMDMuMjgiPjxwYXRoIGQ9Ik02MC44MyA0Mi40NSA1MS42NCAwbC05LjE5IDQyLjQ1TDAgNTEuNjRsNDIuNDUgOS4xOSA5LjE5IDQyLjQ1IDkuMTktNDIuNDUgNDIuNDUtOS4xOXoiIGRhdGEtY29sb3I9IjMiIHN0eWxlPSJmaWxsOiNmYmFhMWIiLz48L3N2Zz4=");
+		background-position: left center;
+		background-repeat: no-repeat;
+		background-size: 24px;
+    }
 }
