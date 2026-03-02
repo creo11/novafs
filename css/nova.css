@@ -1,3 +1,6 @@
+.no-margin-top {
+  margin-top: 0;
+}
 body {
   margin: 0;
   font-family: "Lato", sans-serif;
@@ -205,12 +208,49 @@ button {
   background-image: url('/img/home/sf-skyline-nova.jpg');
 }
 #hero.home .center-content {
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+#hero.home .center-content h1 {
+  margin-top: 100px;
+  color: #fff;
+  max-width: 600px;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+}
+@media (max-width: 600px) {
+  #hero.home .center-content h1 {
+    max-width: none;
+  }
+}
+#hero.home .center-content .certifications {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  gap: 10px;
+}
+#hero.home .center-content .certifications img {
+  max-height: 80px;
+}
+@media (max-width: 1000px) {
+  #hero.home .center-content .certifications {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
 }
 #hero.services {
   height: 500px;
@@ -225,22 +265,6 @@ button {
           flex: 1 1 auto;
   padding: 25px;
   overflow: hidden;
-}
-#hero .center-content .certifications {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 10px;
-}
-#hero .center-content .certifications img {
-  max-height: 80px;
 }
 #hero .center-content .page-title {
   margin-bottom: -40px;
@@ -447,11 +471,13 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
   gap: 12px;
+  container-name: nova-list;
+  container-type: inline-size;
 }
 .nova-list li {
   font-size: 16px;
@@ -463,4 +489,165 @@ button {
   background-position: left center;
   background-repeat: no-repeat;
   background-size: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(50% - 6px);
+          flex: 0 0 calc(50% - 6px);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@container nova-list (max-width: 600px) {
+  .nova-list li {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+  }
+}
+#nova-footer {
+  background: #444;
+  color: #fff;
+}
+#nova-footer .center-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0 60px;
+}
+#nova-footer .center-content a {
+  color: #fbaa1b;
+  text-decoration: none;
+}
+#nova-footer .center-content a:hover {
+  text-decoration: underline;
+}
+#nova-footer .center-content .footer-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: 0 0 auto;
+          flex-flow: 0 0 auto;
+  padding: 15px 0;
+}
+#nova-footer .center-content .footer-logo img {
+  width: 100px;
+}
+@media (max-width: 1000px) {
+  #nova-footer .center-content .footer-logo {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+  }
+}
+#nova-footer .center-content .company-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  gap: 10px;
+  padding: 15px 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+@media (max-width: 1000px) {
+  #nova-footer .center-content .company-info {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 calc(50% - 30px);
+            flex: 1 1 calc(50% - 30px);
+  }
+}
+@media (max-width: 600px) {
+  #nova-footer .center-content .company-info {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+  }
+}
+#nova-footer .center-content .company-info .company-name {
+  font-size: 18px;
+  color: #39aa9b;
+}
+#nova-footer .center-content .company-info p {
+  margin: 0;
+}
+#nova-footer .center-content .company-info .copyright-text {
+  color: #aaa;
+}
+#nova-footer .center-content .contact-info {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  gap: 10px;
+  padding: 15px 0;
+  text-align: right;
+}
+@media (max-width: 1000px) {
+  #nova-footer .center-content .contact-info {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 calc(50% - 30px);
+            flex: 1 1 calc(50% - 30px);
+  }
+}
+@media (max-width: 600px) {
+  #nova-footer .center-content .contact-info {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+    text-align: left;
+  }
+}
+#nova-footer .center-content .contact-info p,
+#nova-footer .center-content .contact-info h1 {
+  margin: 0;
+}
+#nova-footer .center-content .contact-info .phone-link {
+  font-size: 24px;
+  color: #fbaa1b;
+}
+#nova-footer .center-content .contact-info .phone-link:hover {
+  text-decoration: none;
+}
+.call-to-action-container .call-to-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 25px;
+}
+.call-to-action-container .call-to-action .phone-number {
+  color: #fbaa1b;
+  font-size: 35px;
+  font-weight: 600;
+}
+.call-to-action-container .call-to-action-text {
+  color: #666;
+  font-size: 16px;
 }
