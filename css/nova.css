@@ -6,6 +6,7 @@ body {
   font-family: "Lato", sans-serif;
   font-size: 14px;
   color: #333;
+  line-height: 1.5;
 }
 * {
   -webkit-box-sizing: border-box;
@@ -255,6 +256,10 @@ button {
 #hero.services {
   height: 500px;
   background-image: url('/img/services/servicesHero.jpeg');
+}
+#hero.janitorial {
+  height: 500px;
+  background-image: url('/img/janitorial/janitorial.jpeg');
 }
 #hero .center-content {
   display: -webkit-box;
@@ -673,4 +678,118 @@ button {
 .call-to-action-container .cta-item .call-to-action-text {
   color: #666;
   font-size: 16px;
+}
+#janitorialPage {
+  background-color: #f5f5f5;
+}
+#janitorialPage .janitorial-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  aspect-ratio: 1.77777778;
+}
+#janitorialPage .janitorial-carousel__viewport {
+  position: absolute;
+  inset: 0;
+}
+#janitorialPage .janitorial-carousel__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  -webkit-animation-name: janitorialWipe;
+          animation-name: janitorialWipe;
+  -webkit-animation-duration: 30s;
+          animation-duration: 30s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  will-change: clip-path, opacity;
+}
+#janitorialPage .janitorial-carousel__slide:nth-child(1) {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  z-index: 1;
+}
+#janitorialPage .janitorial-carousel__slide:nth-child(2) {
+  -webkit-animation-delay: -6s;
+          animation-delay: -6s;
+  z-index: 2;
+}
+#janitorialPage .janitorial-carousel__slide:nth-child(3) {
+  -webkit-animation-delay: -12s;
+          animation-delay: -12s;
+  z-index: 3;
+}
+#janitorialPage .janitorial-carousel__slide:nth-child(4) {
+  -webkit-animation-delay: -18s;
+          animation-delay: -18s;
+  z-index: 4;
+}
+#janitorialPage .janitorial-carousel__slide:nth-child(5) {
+  -webkit-animation-delay: -24s;
+          animation-delay: -24s;
+  z-index: 5;
+}
+@-webkit-keyframes janitorialWipe {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  3% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+  20% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+  23% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+}
+@keyframes janitorialWipe {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  3% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+  20% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+  23% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #janitorialPage .janitorial-carousel__slide {
+    -webkit-animation: none;
+            animation: none;
+    opacity: 0;
+    clip-path: inset(0 0 0 0);
+  }
+  #janitorialPage .janitorial-carousel__slide:first-child {
+    opacity: 1;
+  }
 }
