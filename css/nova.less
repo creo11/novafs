@@ -486,7 +486,10 @@ button {
 		overflow: hidden;
 		background-position: center;
 		background-size: cover;
-		aspect-ratio: 16 / 9;
+		height: 100%;
+		@media(max-width: 1000px) {
+			aspect-ratio: 16 / 9;
+		}
 	}
 
 	.janitorial-carousel__viewport {
@@ -501,13 +504,12 @@ button {
 		height: 100%;
 		object-fit: cover;
 		opacity: 0;
-		-webkit-clip-path: inset(0 100% 0 0);
-		clip-path: inset(0 100% 0 0);
+		transform: translateX(100%);
 		animation-name: janitorialWipe;
 		animation-duration: @janitorialCarouselDuration;
 		animation-timing-function: ease-in-out;
 		animation-iteration-count: infinite;
-		will-change: clip-path, opacity;
+		will-change: transform, opacity;
 	}
 
 	.generateJanitorialCarouselSlides(@i) when (@i =< @janitorialSlideCount) {
@@ -523,28 +525,23 @@ button {
 @keyframes janitorialWipe {
 	0% {
 		opacity: 0;
-		-webkit-clip-path: inset(0 100% 0 0);
-		clip-path: inset(0 100% 0 0);
+		transform: translateX(100%);
 	}
 	3% {
 		opacity: 1;
-		-webkit-clip-path: inset(0 0 0 0);
-		clip-path: inset(0 0 0 0);
+		transform: translateX(0);
 	}
 	20% {
 		opacity: 1;
-		-webkit-clip-path: inset(0 0 0 0);
-		clip-path: inset(0 0 0 0);
+		transform: translateX(0);
 	}
 	23% {
 		opacity: 0;
-		-webkit-clip-path: inset(0 100% 0 0);
-		clip-path: inset(0 100% 0 0);
+		transform: translateX(-100%);
 	}
 	100% {
 		opacity: 0;
-		-webkit-clip-path: inset(0 100% 0 0);
-		clip-path: inset(0 100% 0 0);
+		transform: translateX(-100%);
 	}
 }
 

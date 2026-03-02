@@ -688,7 +688,12 @@ button {
   overflow: hidden;
   background-position: center;
   background-size: cover;
-  aspect-ratio: 1.77777778;
+  height: 100%;
+}
+@media (max-width: 1000px) {
+  #janitorialPage .janitorial-carousel {
+    aspect-ratio: 1.77777778;
+  }
 }
 #janitorialPage .janitorial-carousel__viewport {
   position: absolute;
@@ -702,7 +707,8 @@ button {
   -o-object-fit: cover;
      object-fit: cover;
   opacity: 0;
-  clip-path: inset(0 100% 0 0);
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
   -webkit-animation-name: janitorialWipe;
           animation-name: janitorialWipe;
   -webkit-animation-duration: 30s;
@@ -711,7 +717,7 @@ button {
           animation-timing-function: ease-in-out;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
-  will-change: clip-path, opacity;
+  will-change: transform, opacity;
 }
 #janitorialPage .janitorial-carousel__slide:nth-child(1) {
   -webkit-animation-delay: 0s;
@@ -741,45 +747,55 @@ button {
 @-webkit-keyframes janitorialWipe {
   0% {
     opacity: 0;
-    clip-path: inset(0 100% 0 0);
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
   }
   3% {
     opacity: 1;
-    clip-path: inset(0 0 0 0);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
   20% {
     opacity: 1;
-    clip-path: inset(0 0 0 0);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
   23% {
     opacity: 0;
-    clip-path: inset(0 100% 0 0);
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
   }
   100% {
     opacity: 0;
-    clip-path: inset(0 100% 0 0);
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
   }
 }
 @keyframes janitorialWipe {
   0% {
     opacity: 0;
-    clip-path: inset(0 100% 0 0);
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
   }
   3% {
     opacity: 1;
-    clip-path: inset(0 0 0 0);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
   20% {
     opacity: 1;
-    clip-path: inset(0 0 0 0);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
   23% {
     opacity: 0;
-    clip-path: inset(0 100% 0 0);
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
   }
   100% {
     opacity: 0;
-    clip-path: inset(0 100% 0 0);
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
   }
 }
 @media (prefers-reduced-motion: reduce) {
