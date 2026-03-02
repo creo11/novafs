@@ -97,7 +97,7 @@ button {
           flex: 1 1 auto;
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: 999;
   -webkit-transition: all ease 0.5s;
   transition: all ease 0.5s;
 }
