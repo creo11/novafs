@@ -49,16 +49,14 @@ document.addEventListener('DOMContentLoaded', function () {
         delay: 3000,
         disableOnInteraction: false
       },
-      cubeEffect: {
-        shadow: true,
-        slideShadows: true,
-        shadowOffset: 20,
-        shadowScale: 0.94
-      },
       allowTouchMove: false,
       slidesPerView: 1,
       spaceBetween: 0,
-      effect: 'cube'
+      effect: 'coverflow',
+      coverflowEffect: {
+        scale: 0.8,
+        stretch: 0.8,
+      },
     });
   }
 });
