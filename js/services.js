@@ -2,7 +2,7 @@ const services = [
 	{
 		title: 'Janitorial Services',
 		info: 'Maintain a pristine environment with our comprehensive daily or weekly cleaning. From dusting and vacuuming to restroom sanitation, we handle the essentials so you can focus on your business.',
-		link: '/services/jantorial',
+		link: '/services/janitorial',
 		img: '/img/services/janitorial.jpeg'
 	},
 	{

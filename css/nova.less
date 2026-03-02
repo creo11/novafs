@@ -294,6 +294,14 @@ button {
 	        	.service-info {
 	        		color: @grey-text;
 	        	}
+				.service-link {
+					background-color: @nova-color;
+					color: #fff;
+					text-decoration: none;
+					border-radius: 7px;
+					padding: 7px 15px;
+					text-align: center;
+				}
 	        	@media(max-width: 650px) {
 	        		width: 100%;
 	        		order: inherit !important;
@@ -434,19 +442,29 @@ button {
 	}
 }
 .call-to-action-container {
-	.call-to-action {
-		display: flex;
-		flex-flow: row;
-		align-items: center;
-		gap: 25px;
-		.phone-number {
-			color: @nova-yellow;
-			font-size: 35px;
-			font-weight: 600;
+	.cta-item {
+		container: call-to-action;
+		container-type: inline-size;
+		border-left: 5px solid @nova-color;
+		padding-left: 30px;
+		.call-to-action {
+			display: flex;
+			flex-flow: row;
+			align-items: center;
+			gap: 25px;
+			@container call-to-action (max-width: 500px) {
+				flex-flow: row wrap;
+			}
+			.phone-number {
+				color: @nova-yellow;
+				font-size: 35px;
+				font-weight: 600;
+				white-space: nowrap;
+			}
 		}
-	}
-	.call-to-action-text {
-		color: #666;
-		font-size: 16px;
+		.call-to-action-text {
+			color: #666;
+			font-size: 16px;
+		}
 	}
 }

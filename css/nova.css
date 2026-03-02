@@ -412,6 +412,14 @@ button {
 #services #servicesContainer .service-item .service-details .service-info {
   color: #666;
 }
+#services #servicesContainer .service-item .service-details .service-link {
+  background-color: #39aa9b;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 7px;
+  padding: 7px 15px;
+  text-align: center;
+}
 @media (max-width: 650px) {
   #services #servicesContainer .service-item .service-details {
     width: 100%;
@@ -629,7 +637,13 @@ button {
 #nova-footer .center-content .contact-info .phone-link:hover {
   text-decoration: none;
 }
-.call-to-action-container .call-to-action {
+.call-to-action-container .cta-item {
+  container: call-to-action;
+  container-type: inline-size;
+  border-left: 5px solid #39aa9b;
+  padding-left: 30px;
+}
+.call-to-action-container .cta-item .call-to-action {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -642,12 +656,21 @@ button {
           align-items: center;
   gap: 25px;
 }
-.call-to-action-container .call-to-action .phone-number {
+@container call-to-action (max-width: 500px) {
+  .call-to-action-container .cta-item .call-to-action {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+  }
+}
+.call-to-action-container .cta-item .call-to-action .phone-number {
   color: #fbaa1b;
   font-size: 35px;
   font-weight: 600;
+  white-space: nowrap;
 }
-.call-to-action-container .call-to-action-text {
+.call-to-action-container .cta-item .call-to-action-text {
   color: #666;
   font-size: 16px;
 }
