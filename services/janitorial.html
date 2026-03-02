@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nova Facility Solutions</title>
     <link rel="stylesheet" href="/css/nova.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,13 +33,23 @@
 			<h1>Janitorial Services</h1>
             <div class="split-content-container collapse-container">
                 <div class="split-content-item">
-                    <div class="janitorial-carousel" role="region" aria-label="Janitorial services photo carousel">
-						<div class="janitorial-carousel__viewport">
-							<img class="janitorial-carousel__slide" src="/img/janitorial/dusting.jpeg" alt="Dusting and surface cleaning" loading="lazy" decoding="async">
-							<img class="janitorial-carousel__slide" src="/img/janitorial/vacuuming.jpeg" alt="Vacuuming and floor care" loading="lazy" decoding="async">
-							<img class="janitorial-carousel__slide" src="/img/janitorial/restroom-cleaning.jpeg" alt="Restroom cleaning and sanitizing" loading="lazy" decoding="async">
-							<img class="janitorial-carousel__slide" src="/img/janitorial/kitchen-cleaning.jpeg" alt="Breakroom and kitchen cleaning" loading="lazy" decoding="async">
-							<img class="janitorial-carousel__slide" src="/img/janitorial/trash-removal.jpeg" alt="Trash and recycling removal" loading="lazy" decoding="async">
+                    <div class="nova-carousel swiper js-nova-swiper" role="region" aria-label="Janitorial services photo carousel">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="/img/janitorial/dusting.jpeg" alt="Dusting and surface cleaning" loading="lazy" decoding="async">
+							</div>
+							<div class="swiper-slide">
+								<img src="/img/janitorial/vacuuming.jpeg" alt="Vacuuming and floor care" loading="lazy" decoding="async">
+							</div>
+							<div class="swiper-slide">
+								<img src="/img/janitorial/restroom-cleaning.jpeg" alt="Restroom cleaning and sanitizing" loading="lazy" decoding="async">
+							</div>
+							<div class="swiper-slide">
+								<img src="/img/janitorial/kitchen-cleaning.jpeg" alt="Breakroom and kitchen cleaning" loading="lazy" decoding="async">
+							</div>
+							<div class="swiper-slide">
+								<img src="/img/janitorial/trash-removal.jpeg" alt="Trash and recycling removal" loading="lazy" decoding="async">
+							</div>
 						</div>
                     </div>
                 </div>
@@ -109,6 +120,7 @@
 </footer>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
+<script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
 <script src="/js/nova-dist.js"></script>
 </body>
 </html>

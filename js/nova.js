@@ -35,4 +35,33 @@ function templateRepeat({ data, templateId, targetId }) {
   }).join('');
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  if (typeof Swiper === 'function') {
+    new Swiper('.js-nova-swiper', {
+      loop: true,
+      speed: 800,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false
+      },
+      cubeEffect: {
+        shadow: true,
+        slideShadows: true,
+        shadowOffset: 20,
+        shadowScale: 0.94
+      },
+      allowTouchMove: false,
+      slidesPerView: 1,
+      spaceBetween: 0,
+      effect: 'cube'
+    });
+  }
+});
+
+// Footer year
 document.getElementById("copyrightYear").textContent = new Date().getFullYear()
