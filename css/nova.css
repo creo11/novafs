@@ -160,9 +160,15 @@ button {
 }
 @media screen and (max-width: 768px) {
   #mainNav .hamburger {
-    display: block;
     font-size: 2rem;
     cursor: pointer;
+    color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   #mainNav .nav-links {
     display: none;
@@ -172,7 +178,7 @@ button {
             flex-direction: column;
     width: 100%;
     position: absolute;
-    top: 60px;
+    top: 95px;
     left: 0;
     background-color: #444;
   }

@@ -127,9 +127,11 @@ button {
   // --- Mobile Styles Nested ---
   @media screen and (max-width: @breakpoint) {
     .hamburger {
-      display: block; 
       font-size: 2rem;
       cursor: pointer;
+	  color: #fff;
+	  display: flex;
+	  align-items: center;
     }
 
     .nav-links {
@@ -137,7 +139,7 @@ button {
       flex-direction: column;
       width: 100%;
       position: absolute;
-      top: 60px;
+      top: 95px;
       left: 0;
       background-color: @mobile-bg;
 
