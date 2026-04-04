@@ -15,12 +15,12 @@
 <div class="main-content">
 <nav id="mainNav" class="flex-col align-center jusitify-center">
     <div class="center-content">
-        <img class="nova-logo" src="/img/home/nova-nav.svg" />
+        <a href="/">
+            <img class="nova-logo" src="/img/home/nova-nav.svg" />
+        </a>
         <input type="checkbox" id="menu-toggle">
         <label for="menu-toggle" class="hamburger">&#9776;</label>
         <ul class="nav-links">
-            <li><a href="/">Home
-            </a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/services">Services</a></li>
             <li><a href="/contact">Contact</a></li>
@@ -116,7 +116,7 @@
 		<div class="service-details">
 			<h3 class="service-title">${title}</h3>
 			<div class="service-info">${info}</div>
-			<a href="${link}" class="service-link">Learn More</a>
+			<!-- <a href="${link}" class="service-link">Learn More</a> -->
 		</div>
 	</div>
 </template>
