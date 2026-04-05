@@ -2,9 +2,17 @@
 @primary-text: #333;
 @nova-color: #39aa9b;
 @nova-yellow: #fbaa1b;
+// Select dropdown arrow (SVG fill #888) — same in all browsers
+@nova-select-arrow-svg: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E";
 
 .no-margin-top {
 	margin-top: 0;
+}
+.no-margin-bottom {
+	margin-bottom: 0;
+}
+.no-margin {
+	margin: 0;
 }
 
 body {
@@ -145,7 +153,10 @@ button {
 
       li {
         text-align: center;
-        padding: 1rem 0;
+		a {
+			padding: 20px;
+			flex: 1 1 auto;
+		}
       }
     }
 
@@ -201,6 +212,14 @@ button {
 		height: 500px;
 		background-image: url('/img/janitorial/janitorial.jpeg');
 	}
+	&.about {
+		height: 500px;
+		background-image: url('/img/about/skyline.jpeg');
+	}
+	&.contact {
+		height: 500px;
+		background-image: url('/img/contact/contact.jpeg');
+	}
 	.center-content {
 		display: flex;
 		flex: 1 1 auto;
@@ -208,7 +227,7 @@ button {
 		overflow: hidden;
 	
 		.page-title {
-			margin-bottom: -40px;
+			margin-bottom: -52px;
 			color: #fff;
 			text-shadow: 0 0 20px #00000055;
 			display: flex;
@@ -372,7 +391,21 @@ button {
 		@container nova-list (max-width: 600px) {
 			flex: 1 1 100%;
 		}
+		&.stacked {
+			flex-flow: column;
+			align-items: flex-start;
+			h3 {
+				margin: 0;
+				color: #333;
+			}
+			p {
+				margin: 0;
+			}
+		}
     }
+}
+#aboutPage {
+	background: #f5f5f5;
 }
 #nova-footer {
 	background: #444;
@@ -513,4 +546,54 @@ button {
 
 #janitorialPage {
 	background-color: #f5f5f5;
+}
+
+form {
+	display: flex;
+	flex-flow: column;
+	gap: 15px;
+	> div {
+		display: flex;
+		flex-flow: column;
+		label {
+			color: #888;
+		}
+		input, select, textarea {
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			padding: 10px;
+			font-size: 16px;
+			flex: 1 1 auto;
+			color: #333;
+			background-color: #fff;
+			transition: border-color 0.2s ease, box-shadow 0.2s ease;
+			&:hover:not(:disabled) {
+				border-color: mix(@nova-color, #ccc, 45%);
+			}
+			&:focus {
+				outline: none;
+				border-color: @nova-color;
+				box-shadow: 0 0 0 3px fade(@nova-color, 28%);
+			}
+			&:disabled {
+				opacity: 0.65;
+				cursor: not-allowed;
+				background-color: #f5f5f5;
+			}
+		}
+		select {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			background-color: #fff;
+			background-image: url(@nova-select-arrow-svg);
+			background-repeat: no-repeat;
+			background-position: right 0.75rem center;
+			background-size: 1.25rem 1.25rem;
+			padding-right: 2.5rem;
+		}
+		select::-ms-expand {
+			display: none;
+		}
+	}
 }

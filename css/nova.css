@@ -1,6 +1,12 @@
 .no-margin-top {
   margin-top: 0;
 }
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+.no-margin {
+  margin: 0;
+}
 body {
   margin: 0;
   font-family: "Lato", sans-serif;
@@ -184,7 +190,12 @@ button {
   }
   #mainNav .nav-links li {
     text-align: center;
-    padding: 1rem 0;
+  }
+  #mainNav .nav-links li a {
+    padding: 20px;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
   }
   #mainNav #menu-toggle:checked ~ .nav-links {
     display: -webkit-box;
@@ -267,6 +278,14 @@ button {
   height: 500px;
   background-image: url('/img/janitorial/janitorial.jpeg');
 }
+#hero.about {
+  height: 500px;
+  background-image: url('/img/about/skyline.jpeg');
+}
+#hero.contact {
+  height: 500px;
+  background-image: url('/img/contact/contact.jpeg');
+}
 #hero .center-content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -278,7 +297,7 @@ button {
   overflow: hidden;
 }
 #hero .center-content .page-title {
-  margin-bottom: -40px;
+  margin-bottom: -52px;
   color: #fff;
   text-shadow: 0 0 20px #00000055;
   display: -webkit-box;
@@ -527,6 +546,25 @@ button {
             flex: 1 1 100%;
   }
 }
+.nova-list li.stacked {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.nova-list li.stacked h3 {
+  margin: 0;
+  color: #333;
+}
+.nova-list li.stacked p {
+  margin: 0;
+}
+#aboutPage {
+  background: #f5f5f5;
+}
 #nova-footer {
   background: #444;
   color: #fff;
@@ -723,4 +761,77 @@ button {
 }
 #janitorialPage {
   background-color: #f5f5f5;
+}
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  gap: 15px;
+}
+form > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+form > div label {
+  color: #888;
+}
+form > div input,
+form > div select,
+form > div textarea {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  color: #333;
+  background-color: #fff;
+  -webkit-transition: border-color 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, -webkit-box-shadow 0.2s ease;
+}
+form > div input:hover:not(:disabled),
+form > div select:hover:not(:disabled),
+form > div textarea:hover:not(:disabled) {
+  border-color: #8abdb6;
+}
+form > div input:focus,
+form > div select:focus,
+form > div textarea:focus {
+  outline: none;
+  border-color: #39aa9b;
+  -webkit-box-shadow: 0 0 0 3px rgba(57, 170, 155, 0.28);
+          box-shadow: 0 0 0 3px rgba(57, 170, 155, 0.28);
+}
+form > div input:disabled,
+form > div select:disabled,
+form > div textarea:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  background-color: #f5f5f5;
+}
+form > div select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25rem 1.25rem;
+  padding-right: 2.5rem;
+}
+form > div select::-ms-expand {
+  display: none;
 }

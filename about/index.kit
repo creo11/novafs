@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- @import "../_head.kit"-->
+<body>
+<div class="main-content">
+	<!-- @import "../_nav.kit" -->
+	<section id="hero" class="about">
+		<div class="center-content">
+			<div class="page-title">
+				<h1>About</h1>
+			</div>
+		</div>
+	</section>
+	<section id="aboutPage">
+		<div class="center-content margin-50">
+			<div class="split-content-container collapse-container">
+				<div class="split-content-item">
+					<h1>Over 15 Years of Excellence in Janitorial Care</h1>
+					<p>Nova Facility Solutions specializes in delivering consistent, high-quality maintenance tailored specifically to the needs of HOA and commercial properties. We focus on creating clean, safe, and professional environments through detailed and dependable service.</p>
+                    <h1>Serving the San Francisco Bay Area</h1>
+					<p>We are committed to helping local businesses and property managers maintain their assets to the highest standards. Our expertise allows us to provide customized service plans that align with your specific property requirements.</p>
+				</div>
+				<div class="split-content-item">
+					<h1 class="no-margin-bottom">Comprehensive Service Capabilities</h2>
+                    <h2>Our team provides a full suite of facility maintenance solutions, including:</h2>
+					<ul class="nova-list">
+						<li class="stacked">
+                            <h3>Core Cleaning</h3>
+                            <p>Professional Janitorial Services, Day Porters, and Unit Turnover Services.</p>
+                        </li>
+						<li class="stacked">
+                            <h3>Specialized Maintenance</h3>
+                            <p>Carpet & Area Rug Cleaning, Painting, and Lightbulb Replacement.</p>
+                        </li>
+                        <li class="stacked">
+                            <h3>Exterior & Heavy Duty</h3>
+                            <p>Pressure Washing, Garage Cleaning, and Garbage Hauling.</p>
+                        </li>
+                        <li class="stacked">
+                            <h3>Facility Protection</h3>
+                            <p>Graffiti Abatement and General Maintenance Repairs.</p>
+                        </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- @import "../_callToAction.kit"-->
+</div>
+<!-- @import "../_footer.kit" -->
+<template id="serviceItem.tpl.html">
+	<div class="service-item">
+		<div class="service-item-img"
+		     style="background-image: url('${img}')">
+		</div>
+		<div class="service-details">
+			<h3 class="service-title">${title}</h3>
+			<div class="service-info">${info}</div>
+			<!-- <a href="${link}" class="service-link">Learn More</a> -->
+		</div>
+	</div>
+</template>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="/js/nova-dist.js"></script>
+<script src="/js/services-dist.js"></script>
+</body>
+</html>
