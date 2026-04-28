@@ -1,6 +1,5 @@
 "use strict";
 
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -9,100 +8,117 @@ function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present,
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
-function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-var EmailMessage = /*#__PURE__*/_createClass(function EmailMessage() {
-  _classCallCheck(this, EmailMessage);
-});
-function escapeHtml(value) {
-  return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
-}
-function buildMimeEmail(params) {
-  var boundary = "boundary_".concat(crypto.randomUUID());
-  var headers = ["From: ".concat(params.from), "To: ".concat(params.to), "Subject: ".concat(params.subject), "MIME-Version: 1.0", "Content-Type: multipart/alternative; boundary=\"".concat(boundary, "\"")].concat(_toConsumableArray(params.replyTo ? ["Reply-To: ".concat(params.replyTo)] : [])).join("\r\n");
-  var body = ["--".concat(boundary), "Content-Type: text/plain; charset=UTF-8", "", params.text, "", "--".concat(boundary), "Content-Type: text/html; charset=UTF-8", "", params.html, "", "--".concat(boundary, "--"), ""].join("\r\n");
-  return "".concat(headers, "\r\n\r\n").concat(body);
-}
 var onRequestPost = exports.onRequestPost = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(context) {
-    var contentType, formData, name, email, phone, propertyType, service, _message, safeName, safeEmail, safePhone, safePropertyType, safeService, safeMessage, _to, _from, subject, text, html, _raw, _t;
+    var formData, name, email, phone, service, message, tokenRes, errorText, tokenData, emailHtml, graphRes, _errorText, _t;
     return _regenerator().w(function (_context) {
       while (1) switch (_context.p = _context.n) {
         case 0:
           _context.p = 0;
-          contentType = context.request.headers.get("content-type") || "";
-          if (!(!contentType.includes("application/x-www-form-urlencoded") && !contentType.includes("multipart/form-data"))) {
-            _context.n = 1;
-            break;
-          }
-          return _context.a(2, new Response("Unsupported content type", {
-            status: 415
-          }));
-        case 1:
-          _context.n = 2;
+          _context.n = 1;
           return context.request.formData();
-        case 2:
+        case 1:
           formData = _context.v;
           name = String(formData.get("name") || "").trim();
           email = String(formData.get("email") || "").trim();
           phone = String(formData.get("phone") || "").trim();
-          propertyType = String(formData.get("propertyType") || "").trim();
           service = String(formData.get("service") || "").trim();
-          _message = String(formData.get("message") || "").trim();
-          if (!(!name || !email || !service || !_message)) {
-            _context.n = 3;
+          message = String(formData.get("message") || "").trim();
+          if (!(!name || !email || !message)) {
+            _context.n = 2;
             break;
           }
           return _context.a(2, new Response("Missing required fields", {
             status: 400
           }));
-        case 3:
-          safeName = escapeHtml(name);
-          safeEmail = escapeHtml(email);
-          safePhone = escapeHtml(phone);
-          safePropertyType = escapeHtml(propertyType);
-          safeService = escapeHtml(service);
-          safeMessage = escapeHtml(_message).replace(/\n/g, "<br>");
-          _to = "your-verified-inbox@example.com";
-          _from = "website@yourdomain.com";
-          subject = "New quote request: ".concat(service);
-          text = ["New website quote request", "", "Name: ".concat(name), "Email: ".concat(email), "Phone: ".concat(phone), "Property Type: ".concat(propertyType), "Service: ".concat(service), "", "Message:", _message].join("\n");
-          html = "\n        <h2>New website quote request</h2>\n        <p><strong>Name:</strong> ".concat(safeName, "</p>\n        <p><strong>Email:</strong> ").concat(safeEmail, "</p>\n        <p><strong>Phone:</strong> ").concat(safePhone, "</p>\n        <p><strong>Property Type:</strong> ").concat(safePropertyType, "</p>\n        <p><strong>Service:</strong> ").concat(safeService, "</p>\n        <p><strong>Message:</strong><br>").concat(safeMessage, "</p>\n      ");
-          _raw = buildMimeEmail({
-            from: _from,
-            to: _to,
-            replyTo: email,
-            subject: subject,
-            text: text,
-            html: html
-          });
-          _context.n = 4;
-          return context.env.CONTACT_NOTIFICATION_EMAIL.send(new EmailMessage(_from, _to, _raw));
-        case 4:
-          return _context.a(2, new Response(null, {
-            status: 303,
+        case 2:
+          _context.n = 3;
+          return fetch("https://login.microsoftonline.com/".concat(context.env.AZURE_TENANT_ID, "/oauth2/v2.0/token"), {
+            method: "POST",
             headers: {
-              Location: "/contact/thank-you"
-            }
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({
+              client_id: context.env.AZURE_CLIENT_ID,
+              client_secret: context.env.AZURE_CLIENT_SECRET,
+              scope: "https://graph.microsoft.com/.default",
+              grant_type: "client_credentials"
+            })
+          });
+        case 3:
+          tokenRes = _context.v;
+          if (tokenRes.ok) {
+            _context.n = 5;
+            break;
+          }
+          _context.n = 4;
+          return tokenRes.text();
+        case 4:
+          errorText = _context.v;
+          console.error("Token error:", errorText);
+          return _context.a(2, new Response("Failed to authenticate email service", {
+            status: 500
           }));
         case 5:
-          _context.p = 5;
+          _context.n = 6;
+          return tokenRes.json();
+        case 6:
+          tokenData = _context.v;
+          emailHtml = "\n      <h2>New Website Contact Form Submission</h2>\n      <p><strong>Name:</strong> ".concat(name, "</p>\n      <p><strong>Email:</strong> ").concat(email, "</p>\n      <p><strong>Phone:</strong> ").concat(phone || "Not provided", "</p>\n      <p><strong>Service:</strong> ").concat(service || "Not selected", "</p>\n      <p><strong>Message:</strong></p>\n      <p>").concat(message.replace(/\n/g, "<br>"), "</p>\n    ");
+          _context.n = 7;
+          return fetch("https://graph.microsoft.com/v1.0/users/".concat(context.env.GRAPH_FROM_EMAIL, "/sendMail"), {
+            method: "POST",
+            headers: {
+              Authorization: "Bearer ".concat(tokenData.access_token),
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              message: {
+                subject: "New Nova Website Inquiry".concat(service ? " - ".concat(service) : ""),
+                body: {
+                  contentType: "HTML",
+                  content: emailHtml
+                },
+                toRecipients: [{
+                  emailAddress: {
+                    address: context.env.GRAPH_TO_EMAIL
+                  }
+                }],
+                replyTo: [{
+                  emailAddress: {
+                    address: email,
+                    name: name
+                  }
+                }]
+              },
+              saveToSentItems: true
+            })
+          });
+        case 7:
+          graphRes = _context.v;
+          if (graphRes.ok) {
+            _context.n = 9;
+            break;
+          }
+          _context.n = 8;
+          return graphRes.text();
+        case 8:
+          _errorText = _context.v;
+          console.error("Graph sendMail error:", _errorText);
+          return _context.a(2, new Response("Failed to send message", {
+            status: 500
+          }));
+        case 9:
+          return _context.a(2, Response.redirect(new URL("/contact/thank-you", context.request.url), 303));
+        case 10:
+          _context.p = 10;
           _t = _context.v;
           console.error("Contact form error:", _t);
           return _context.a(2, new Response("Server error", {
             status: 500
           }));
       }
-    }, _callee, null, [[0, 5]]);
+    }, _callee, null, [[0, 10]]);
   }));
   return function onRequestPost(_x) {
     return _ref.apply(this, arguments);
