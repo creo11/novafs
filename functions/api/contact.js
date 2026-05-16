@@ -144,7 +144,9 @@ var onRequestPost = exports.onRequestPost = /*#__PURE__*/function () {
             status: 500
           }));
         case 13:
-          return _context.a(2, Response.redirect(new URL("/contact/thank-you", context.request.url), 303));
+          return _context.a(2, Response.json({
+            success: true
+          }));
         case 14:
           _context.p = 14;
           _t = _context.v;

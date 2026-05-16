@@ -119,7 +119,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       return new Response("Failed to send message", { status: 500 });
     }
 
-    return Response.redirect(new URL("/contact/thank-you", context.request.url), 303);
+    return Response.json({ success: true });
   } catch (error) {
     console.error("Contact form error:", error);
     return new Response("Server error", { status: 500 });

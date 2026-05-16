@@ -38,7 +38,7 @@
 		<div class="center-content margin-50">
 			<div class="split-content-container collapse-container">
 				<div class="split-content-item">
-					<form action="/api/contact" method="POST">
+					<form id="contact-form"action="/api/contact" method="POST">
 						<div>
 						  <label for="name">Name</label>
 						  <input id="name" name="name" type="text" required />
@@ -88,7 +88,8 @@
 						  <textarea id="message" name="message" rows="6" required></textarea>
 						</div>
 						<div class="cf-turnstile" data-sitekey="0x4AAAAAADQoIFINvis_C3xl"></div>
-						<button type="submit">Request a Quote</button>
+						<button id="contact-submit" type="submit">Request a Quote</button>
+						<div id="form-message" aria-live="polite"></div>
 					  </form>
 				</div>
 				<div class="split-content-item">
@@ -180,5 +181,46 @@
 <script src="https://unpkg.com/tippy.js@6"></script>
 <script src="/js/nova-dist.js"></script>
 <script src="/js/services-dist.js"></script>
+<script>
+    const contactForm = document.getElementById("contact-form");
+    const formMessage = document.getElementById("form-message");
+    const submitButton = document.getElementById("contact-submit");
+  
+    contactForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+  
+      formMessage.textContent = "";
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+  
+      try {
+        const formData = new FormData(contactForm);
+  
+        const response = await fetch(contactForm.action, {
+          method: "POST",
+          body: formData
+        });
+  
+        if (!response.ok) {
+          throw new Error("Form submission failed");
+        }
+  
+        formMessage.textContent = "Thank you! Your message has been sent successfully.";
+        formMessage.className = "success-message";
+  
+        contactForm.reset();
+  
+        if (window.turnstile) {
+          turnstile.reset();
+        }
+      } catch (error) {
+        formMessage.textContent = "Sorry, something went wrong. Please try again.";
+        formMessage.className = "error-message";
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Request a Quote";
+      }
+    });
+</script>
 </body>
 </html>
