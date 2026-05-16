@@ -39,57 +39,62 @@
 			<div class="split-content-container collapse-container">
 				<div class="split-content-item">
 					<form id="contact-form"action="/api/contact" method="POST">
-						<div>
-						  <label for="name">Name</label>
-						  <input id="name" name="name" type="text" required />
+						<div id="form-group" class="form-group">
+							<div>
+							<label for="name">Name</label>
+							<input id="name" name="name" type="text" required />
+							</div>
+						
+							<div>
+							<label for="email">Email</label>
+							<input id="email" name="email" type="email" required />
+							</div>
+						
+							<div>
+							<label for="phone">Phone</label>
+							<input id="phone" name="phone" type="tel" />
+							</div>
+						
+							<div>
+							<label for="propertyType">Property Type</label>
+							<select id="propertyType" name="propertyType">
+								<option value="">Select one</option>
+								<option>HOA</option>
+								<option>Apartment Building</option>
+								<option>Office</option>
+								<option>Commercial Property</option>
+								<option>School</option>
+								<option>Healthcare</option>
+								<option>Government</option>
+							</select>
+							</div>
+						
+							<div>
+							<label for="service">Service Needed</label>
+							<select id="service" name="service" required>
+								<option value="">Select a service</option>
+								<option>Janitorial Services</option>
+								<option>Carpet & Area Rug Cleaning</option>
+								<option>Garage Cleaning & Pressure Washing</option>
+								<option>Garbage Hauling & Paint/Lightbulb Removal</option>
+								<option>Graffiti Abatement</option>
+								<option>Unit Turnover Services</option>
+								<option>Window Cleaning</option>
+								<option>Day Porters</option>
+							</select>
+							</div>
+						
+							<div>
+							<label for="message">Message</label>
+							<textarea id="message" name="message" rows="6" required></textarea>
+							</div>
+							<div class="cf-turnstile" data-sitekey="0x4AAAAAADQoIFINvis_C3xl"></div>
+							<button id="contact-submit" type="submit">Request a Quote</button>
 						</div>
-					  
-						<div>
-						  <label for="email">Email</label>
-						  <input id="email" name="email" type="email" required />
+						<div id="form-message" class="hidden" aria-live="polite">
+							<h1>Thank you! We'll be in touch soon.</h1>
+							<p>We've received your request and appreciate the opportunity to work with you. A member of our team will contact you within 24 hours to discuss your property needs and provide the next steps.</p>
 						</div>
-					  
-						<div>
-						  <label for="phone">Phone</label>
-						  <input id="phone" name="phone" type="tel" />
-						</div>
-					  
-						<div>
-						  <label for="propertyType">Property Type</label>
-						  <select id="propertyType" name="propertyType">
-							<option value="">Select one</option>
-							<option>HOA</option>
-							<option>Apartment Building</option>
-							<option>Office</option>
-							<option>Commercial Property</option>
-							<option>School</option>
-							<option>Healthcare</option>
-							<option>Government</option>
-						  </select>
-						</div>
-					  
-						<div>
-						  <label for="service">Service Needed</label>
-						  <select id="service" name="service" required>
-							<option value="">Select a service</option>
-							<option>Janitorial Services</option>
-							<option>Carpet & Area Rug Cleaning</option>
-							<option>Garage Cleaning & Pressure Washing</option>
-							<option>Garbage Hauling & Paint/Lightbulb Removal</option>
-							<option>Graffiti Abatement</option>
-							<option>Unit Turnover Services</option>
-							<option>Window Cleaning</option>
-							<option>Day Porters</option>
-						  </select>
-						</div>
-					  
-						<div>
-						  <label for="message">Message</label>
-						  <textarea id="message" name="message" rows="6" required></textarea>
-						</div>
-						<div class="cf-turnstile" data-sitekey="0x4AAAAAADQoIFINvis_C3xl"></div>
-						<button id="contact-submit" type="submit">Request a Quote</button>
-						<div id="form-message" aria-live="polite"></div>
 					  </form>
 				</div>
 				<div class="split-content-item">
@@ -185,6 +190,7 @@
     const contactForm = document.getElementById("contact-form");
     const formMessage = document.getElementById("form-message");
     const submitButton = document.getElementById("contact-submit");
+	const formGroup = document.getElementById("form-group");
   
     contactForm.addEventListener("submit", async function (event) {
       event.preventDefault();
@@ -192,8 +198,11 @@
       formMessage.textContent = "";
       submitButton.disabled = true;
       submitButton.textContent = "Sending...";
+
+	  formGroup.classList.add("hidden");
+	  formMessage.classList.remove("hidden");
   
-      try {
+      /*try {
         const formData = new FormData(contactForm);
   
         const response = await fetch(contactForm.action, {
@@ -219,7 +228,7 @@
       } finally {
         submitButton.disabled = false;
         submitButton.textContent = "Request a Quote";
-      }
+      }*/
     });
 </script>
 </body>

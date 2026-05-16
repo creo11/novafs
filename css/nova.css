@@ -7,6 +7,9 @@
 .no-margin {
   margin: 0;
 }
+.hidden {
+  display: none !important;
+}
 body {
   margin: 0;
   font-family: "Lato", sans-serif;
@@ -762,7 +765,7 @@ button {
 #janitorialPage {
   background-color: #f5f5f5;
 }
-form {
+.form-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -772,7 +775,7 @@ form {
           flex-flow: column;
   gap: 15px;
 }
-form > div {
+.form-group > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -781,12 +784,12 @@ form > div {
       -ms-flex-flow: column;
           flex-flow: column;
 }
-form > div label {
+.form-group > div label {
   color: #888;
 }
-form > div input,
-form > div select,
-form > div textarea {
+.form-group > div input,
+.form-group > div select,
+.form-group > div textarea {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
@@ -801,27 +804,27 @@ form > div textarea {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, -webkit-box-shadow 0.2s ease;
 }
-form > div input:hover:not(:disabled),
-form > div select:hover:not(:disabled),
-form > div textarea:hover:not(:disabled) {
+.form-group > div input:hover:not(:disabled),
+.form-group > div select:hover:not(:disabled),
+.form-group > div textarea:hover:not(:disabled) {
   border-color: #8abdb6;
 }
-form > div input:focus,
-form > div select:focus,
-form > div textarea:focus {
+.form-group > div input:focus,
+.form-group > div select:focus,
+.form-group > div textarea:focus {
   outline: none;
   border-color: #39aa9b;
   -webkit-box-shadow: 0 0 0 3px rgba(57, 170, 155, 0.28);
           box-shadow: 0 0 0 3px rgba(57, 170, 155, 0.28);
 }
-form > div input:disabled,
-form > div select:disabled,
-form > div textarea:disabled {
+.form-group > div input:disabled,
+.form-group > div select:disabled,
+.form-group > div textarea:disabled {
   opacity: 0.65;
   cursor: not-allowed;
   background-color: #f5f5f5;
 }
-form > div select {
+.form-group > div select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -832,6 +835,6 @@ form > div select {
   background-size: 1.25rem 1.25rem;
   padding-right: 2.5rem;
 }
-form > div select::-ms-expand {
+.form-group > div select::-ms-expand {
   display: none;
 }
