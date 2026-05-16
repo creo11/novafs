@@ -22,7 +22,7 @@ function getValue(obj, path) {
 function templateRepeat({ data, templateId, targetId }) {
   const template = document.getElementById(templateId).innerHTML;
   const target = document.getElementById(targetId);
-
+  if (!target) return;
   target.innerHTML = data.map((item, index) => {
     return template.replace(/\${(.*?)}/g, (_, expression) => {
       const key = expression.trim();
