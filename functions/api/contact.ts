@@ -4,11 +4,36 @@ interface Env {
   AZURE_CLIENT_SECRET: string;
   GRAPH_FROM_EMAIL: string;
   GRAPH_TO_EMAIL: string;
+  TURNSTILE_SECRET_KEY: string;
 }
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   try {
     const formData = await context.request.formData();
+
+    // Turnstile verification
+    const turnstileToken = String(formData.get("cf-turnstile-response") || "");
+
+    if (!turnstileToken) {
+      return new Response("Missing verification", { status: 400 });
+    }
+
+    const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        secret: context.env.TURNSTILE_SECRET_KEY,
+        response: turnstileToken,
+      }),
+    });
+
+    const verifyData = await verifyRes.json() as { success: boolean };
+
+    if (!verifyData.success) {
+      return new Response("Bot verification failed", { status: 403 });
+    }
 
     const name = String(formData.get("name") || "").trim();
     const email = String(formData.get("email") || "").trim();

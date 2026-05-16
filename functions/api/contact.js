@@ -10,7 +10,7 @@ function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 var onRequestPost = exports.onRequestPost = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(context) {
-    var formData, name, email, phone, service, message, tokenRes, errorText, tokenData, emailHtml, graphRes, _errorText, _t;
+    var formData, turnstileToken, verifyRes, verifyData, name, email, phone, service, message, tokenRes, errorText, tokenData, emailHtml, graphRes, _errorText, _t;
     return _regenerator().w(function (_context) {
       while (1) switch (_context.p = _context.n) {
         case 0:
@@ -19,20 +19,55 @@ var onRequestPost = exports.onRequestPost = /*#__PURE__*/function () {
           return context.request.formData();
         case 1:
           formData = _context.v;
+          // Turnstile verification
+          turnstileToken = String(formData.get("cf-turnstile-response") || "");
+          if (turnstileToken) {
+            _context.n = 2;
+            break;
+          }
+          return _context.a(2, new Response("Missing verification", {
+            status: 400
+          }));
+        case 2:
+          _context.n = 3;
+          return fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({
+              secret: context.env.TURNSTILE_SECRET_KEY,
+              response: turnstileToken
+            })
+          });
+        case 3:
+          verifyRes = _context.v;
+          _context.n = 4;
+          return verifyRes.json();
+        case 4:
+          verifyData = _context.v;
+          if (verifyData.success) {
+            _context.n = 5;
+            break;
+          }
+          return _context.a(2, new Response("Bot verification failed", {
+            status: 403
+          }));
+        case 5:
           name = String(formData.get("name") || "").trim();
           email = String(formData.get("email") || "").trim();
           phone = String(formData.get("phone") || "").trim();
           service = String(formData.get("service") || "").trim();
           message = String(formData.get("message") || "").trim();
           if (!(!name || !email || !message)) {
-            _context.n = 2;
+            _context.n = 6;
             break;
           }
           return _context.a(2, new Response("Missing required fields", {
             status: 400
           }));
-        case 2:
-          _context.n = 3;
+        case 6:
+          _context.n = 7;
           return fetch("https://login.microsoftonline.com/".concat(context.env.AZURE_TENANT_ID, "/oauth2/v2.0/token"), {
             method: "POST",
             headers: {
@@ -45,27 +80,27 @@ var onRequestPost = exports.onRequestPost = /*#__PURE__*/function () {
               grant_type: "client_credentials"
             })
           });
-        case 3:
+        case 7:
           tokenRes = _context.v;
           if (tokenRes.ok) {
-            _context.n = 5;
+            _context.n = 9;
             break;
           }
-          _context.n = 4;
+          _context.n = 8;
           return tokenRes.text();
-        case 4:
+        case 8:
           errorText = _context.v;
           console.error("Token error:", errorText);
           return _context.a(2, new Response("Failed to authenticate email service", {
             status: 500
           }));
-        case 5:
-          _context.n = 6;
+        case 9:
+          _context.n = 10;
           return tokenRes.json();
-        case 6:
+        case 10:
           tokenData = _context.v;
           emailHtml = "\n      <h2>New Website Contact Form Submission</h2>\n      <p><strong>Name:</strong> ".concat(name, "</p>\n      <p><strong>Email:</strong> ").concat(email, "</p>\n      <p><strong>Phone:</strong> ").concat(phone || "Not provided", "</p>\n      <p><strong>Service:</strong> ").concat(service || "Not selected", "</p>\n      <p><strong>Message:</strong></p>\n      <p>").concat(message.replace(/\n/g, "<br>"), "</p>\n    ");
-          _context.n = 7;
+          _context.n = 11;
           return fetch("https://graph.microsoft.com/v1.0/users/".concat(context.env.GRAPH_FROM_EMAIL, "/sendMail"), {
             method: "POST",
             headers: {
@@ -94,31 +129,31 @@ var onRequestPost = exports.onRequestPost = /*#__PURE__*/function () {
               saveToSentItems: true
             })
           });
-        case 7:
+        case 11:
           graphRes = _context.v;
           if (graphRes.ok) {
-            _context.n = 9;
+            _context.n = 13;
             break;
           }
-          _context.n = 8;
+          _context.n = 12;
           return graphRes.text();
-        case 8:
+        case 12:
           _errorText = _context.v;
           console.error("Graph sendMail error:", _errorText);
           return _context.a(2, new Response("Failed to send message", {
             status: 500
           }));
-        case 9:
+        case 13:
           return _context.a(2, Response.redirect(new URL("/contact/thank-you", context.request.url), 303));
-        case 10:
-          _context.p = 10;
+        case 14:
+          _context.p = 14;
           _t = _context.v;
           console.error("Contact form error:", _t);
           return _context.a(2, new Response("Server error", {
             status: 500
           }));
       }
-    }, _callee, null, [[0, 10]]);
+    }, _callee, null, [[0, 14]]);
   }));
   return function onRequestPost(_x) {
     return _ref.apply(this, arguments);
