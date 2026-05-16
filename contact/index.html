@@ -195,14 +195,10 @@
     contactForm.addEventListener("submit", async function (event) {
       event.preventDefault();
   
-      formMessage.textContent = "";
       submitButton.disabled = true;
       submitButton.textContent = "Sending...";
-
-	  formGroup.classList.add("hidden");
-	  formMessage.classList.remove("hidden");
   
-      /*try {
+      try {
         const formData = new FormData(contactForm);
   
         const response = await fetch(contactForm.action, {
@@ -214,8 +210,8 @@
           throw new Error("Form submission failed");
         }
   
-        formMessage.textContent = "Thank you! Your message has been sent successfully.";
-        formMessage.className = "success-message";
+        formGroup.classList.add("hidden");
+		formMessage.classList.remove("hidden");
   
         contactForm.reset();
   
@@ -223,12 +219,13 @@
           turnstile.reset();
         }
       } catch (error) {
+		formMessage.classList.remove("hidden");
         formMessage.textContent = "Sorry, something went wrong. Please try again.";
         formMessage.className = "error-message";
       } finally {
         submitButton.disabled = false;
         submitButton.textContent = "Request a Quote";
-      }*/
+      }
     });
 </script>
 </body>
