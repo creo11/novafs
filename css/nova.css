@@ -851,6 +851,14 @@ button {
       -ms-flex-align: center;
           align-items: center;
 }
+@media (max-width: 650px) {
+  #form-message {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+  }
+}
 #form-message .form-message-image {
   display: -webkit-box;
   display: -ms-flexbox;

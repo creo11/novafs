@@ -217,6 +217,10 @@
   
         formGroup.classList.add("hidden");
 		formMessage.classList.remove("hidden");
+		window.scrollTo({
+			top: document.getElementById("contact-form").offsetTop - 120,
+			behavior: "smooth"
+		});
   
         contactForm.reset();
   
