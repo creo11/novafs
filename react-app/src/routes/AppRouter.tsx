@@ -8,6 +8,11 @@ import NotFoundPage from "../pages/NotFoundPage";
 import ServicesPage from "../pages/ServicesPage";
 import { ROUTE_HEROES } from "./heroConfig";
 
+const basename =
+  import.meta.env.BASE_URL === "/"
+    ? undefined
+    : import.meta.env.BASE_URL.replace(/\/$/, "");
+
 const router = createBrowserRouter([
   {
     element: <MainLayout />,
@@ -38,7 +43,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+], { basename });
 
 export default function AppRouter() {
   return <RouterProvider router={router} />;
