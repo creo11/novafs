@@ -36,12 +36,6 @@ const services = [
 		img: '/img/services/unitTurnover.jpeg'
 	},
 	{
-		title: 'Window Cleaning',
-		info: 'See the world more clearly with streak-free interior and exterior window washing. We clean frames, sills, and glass to let the natural light shine through beautifully.',
-		link: '/services/window-cleaning',
-		img: '/img/services/windowCleaning.jpeg'
-	},
-	{
 		title: 'Day Porters',
 		info: 'Our on-site day porters provide a consistent presence to manage spills, restock supplies, and keep common areas immaculate throughout your busiest business hours.',
 		link: '/services/day-porters',
